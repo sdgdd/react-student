@@ -1,0 +1,26 @@
+{
+  "studentInfo": [
+    {
+      "id": "0057",
+      "name": "黄蒲昌衡",
+      "age": "23",
+      "phone": "132343344533",
+      "email": "1173366497@qq.com",
+      "degree": "硕士",
+      "school": "重庆大学",
+      "profession": "程序员",
+      "brefInfo": "你好你好"
+    },
+    {
+      "id": "9917",
+      "name": "测试",
+      "age": "34",
+      "phone": "1336877654",
+      "email": "1173366497@qq.com",
+      "degree": "大学",
+      "school": "重庆科技大学",
+      "profession": "程序员",
+      "brefInfo": "你好你好"
+    }
+  ]
+}

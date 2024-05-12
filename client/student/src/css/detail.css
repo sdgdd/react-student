@@ -1,0 +1,6 @@
+.opter-button{
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    justify-content: flex-end;
+}
