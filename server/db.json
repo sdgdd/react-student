@@ -21,6 +21,17 @@
       "school": "重庆科技大学",
       "profession": "程序员",
       "brefInfo": "你好你好"
+    },
+    {
+      "id": "7dd1",
+      "name": "迷麟",
+      "age": "23",
+      "phone": "1332344224",
+      "email": "1173366497@qq.com",
+      "degree": "硕士",
+      "school": "魁拔第三帝国",
+      "profession": "战士",
+      "brefInfo": "齐恒三~~~"
     }
   ]
 }

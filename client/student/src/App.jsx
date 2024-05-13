@@ -1,15 +1,6 @@
-import {
-  Routes,
-  Route,
-  Navigate,
-  NavLink,
-  useLocation,
-} from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import AddOrEdit from "./components/AddOrEdit.jsx";
+import { NavLink, useLocation } from "react-router-dom";
 import Alter from "./components/Alter.jsx";
-import Detail from "./components/Detail.jsx";
+import HomeRouter from "./router/HomeRouter.jsx";
 
 function App() {
   const location = useLocation();
@@ -26,17 +17,17 @@ function App() {
           <ul className="navbar-nav">
             <li className="nav-item ">
               <NavLink to="/home" className="nav-link">
-                首页
+                主页
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/about" className="nav-link">
-                关于
+                关于我们
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/AddOrEdit" className="nav-link">
-                添加
+                添加用户
               </NavLink>
             </li>
           </ul>
@@ -51,13 +42,7 @@ function App() {
       ) : null}
 
       <div style={{ padding: "0 64px" }}>
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/AddOrEdit" element={<AddOrEdit />} />
-          <Route path="/" element={<Navigate to="/home" replace={true} />} />
-          <Route path="/detail/:id" element={<Detail />} />
-        </Routes>
+        <HomeRouter></HomeRouter>
       </div>
     </div>
   );
