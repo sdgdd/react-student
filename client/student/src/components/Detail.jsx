@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import { getStudentApi, deletStudentApi } from "../api/getStudent";
 import { useNavigate } from "react-router-dom";
 import "../css/detail.css";
+import { deleteStuData } from "../store/studentSlice";
+import { useDispatch } from "react-redux";
+
 export default function Detail() {
   const routerParam = useParams();
   let [studentInfo, setStudentInfo] = useState([]);
-
+  const dispatch = useDispatch();
   const strMap = new Map([
     ["name", "姓名"],
     ["age", "年纪"],
@@ -37,14 +40,16 @@ export default function Detail() {
 
   function handleDelet() {
     if (window.confirm("是否删除")) {
-      deletStudentApi(routerParam.id).then((res) => {
-        navigate("/home", {
-          state: {
-            type: "success",
-            message: "删除成功",
-          },
-        });
+      dispatch(deleteStuData(routerParam.id));
+      navigate("/home", {
+        state: {
+          type: "success",
+          message: "删除成功",
+        },
       });
+      // deletStudentApi(routerParam.id).then((res) => {
+
+      // });
     }
   }
 

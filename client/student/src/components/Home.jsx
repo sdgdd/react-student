@@ -2,33 +2,39 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getStudentApi } from "../api/getStudent";
 import "../css/app.css";
+import { useSelector, useDispatch } from "react-redux";
+import { getFetchStuData } from "../store/studentSlice";
 
 export default function Home() {
   const [studentInfo, setStudentInfo] = useState([]);
 
   const [seachStr, setSeachStr] = useState([]);
+  const student = useSelector((state) => state.student);
+  const dispath = useDispatch();
 
   useEffect(() => {
-    getStudentApi(seachStr).then(({ data }) => {
-      setStudentInfo(
-        data.map((item) => {
-          return (
-            <tr key={item.id}>
-              <th>{item.name}</th>
-              <th>{item.phone}</th>
-              <th>{item.age}</th>
-              <th>
-                <NavLink to={"/detail/" + item.id} className="nav-link">
-                  详情
-                </NavLink>
-              </th>
-            </tr>
-          );
-        })
-      );
-      console.log(data);
-    });
-  }, []);
+    if (!student.studentList.length) {
+      dispath(getFetchStuData(""));
+      return;
+    }
+
+    setStudentInfo(
+      student.studentList.map((item) => {
+        return (
+          <tr key={item.id}>
+            <th>{item.name}</th>
+            <th>{item.phone}</th>
+            <th>{item.age}</th>
+            <th>
+              <NavLink to={"/detail/" + item.id} className="nav-link">
+                详情
+              </NavLink>
+            </th>
+          </tr>
+        );
+      })
+    );
+  }, [student, dispath]);
 
   function handleSearch() {
     getStudentApi(seachStr).then(({ data }) => {
